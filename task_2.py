@@ -6,24 +6,24 @@
 
 from random import randint
 class Quest:
-    def __init__(self, LOWER_LIMIT, UPPER_LIMIT, COUNTER) -> str:
-        self.LOWER_LIMIT = LOWER_LIMIT
-        self.UPPER_LIMIT = UPPER_LIMIT
-        self.COUNTER = COUNTER
+    def __init__(self, lower_limit: int, upper_limit: int, counter) -> str:
+        self.lower_limit = lower_limit
+        self.upper_limit = upper_limit
+        self.counter = counter
     def get_random_num(self):
-        num = randint(self.LOWER_LIMIT, self.UPPER_LIMIT)
+        num = randint(self.lower_limit, self.upper_limit)
         return num
 
     def get_answer(self):
         r_num = self.get_random_num()
         i = 0
-        while i < self.COUNTER:
+        while i < self.counter:
             i += 1
-            input_num = int(input(f'Введите число больше {self.LOWER_LIMIT} и меньше {self.UPPER_LIMIT} : '))
+            input_num = int(input(f'Введите число больше {self.lower_limit} и меньше {self.upper_limit} : '))
             if input_num > r_num:
-                print(f'Число больше\n Осталось попыток {self.COUNTER - i}')
+                print(f'Число больше\n Осталось попыток {self.counter - i}')
             elif input_num < r_num:
-                print(f'Число меньше\n Осталось попыток {self.COUNTER - i}')
+                print(f'Число меньше\n Осталось попыток {self.counter - i}')
             elif input_num == r_num:
                 print('Вы угадали число!')
                 break
