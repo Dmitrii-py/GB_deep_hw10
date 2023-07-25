@@ -15,16 +15,26 @@ class Triangle:
         self.b = b
         self.c = c
 
-    def get_type_triangle(self) -> str:
+    def check_on_exist_triangle(self) -> bool:
         if self.a + self.b <= self.c or self.a + self.c <= self.b or self.b + self.c <= self.a:
-            type_tr = "Треугольник не существует"
-        elif self.a != self.b and self.a != self.c and self.b != self.c:
-            type_tr = 'Разносторонний'
-        elif self.a == self.b == self.c:
-            type_tr = 'Равносторонний'
+            res = False
         else:
-            type_tr = 'Равнобедренный'
+            res = True
+        return res
+
+    def get_type_triangle(self) -> str:
+        triangle = self.check_on_exist_triangle()
+        if triangle:
+            if self.a != self.b and self.a != self.c and self.b != self.c:
+                type_tr = 'Разносторонний'
+            elif self.a == self.b == self.c:
+                type_tr = 'Равносторонний'
+            else:
+                type_tr = 'Равнобедренный'
+        else:
+            type_tr = "Треугольник не существует"
         return type_tr
 
-t = Triangle(2, 5, 3)
+
+t = Triangle(2, 2, 2)
 print(t.get_type_triangle())
